@@ -1,0 +1,455 @@
+/* --- CONFIGURAÇÕES GERAIS (Paleta Baseada no Logo) --- */
+:root {
+    --primary-black: #000000;
+    --luxury-gold: #C59B27; /* Tom de ouro refinado retirado do logo */
+    --clean-white: #FFFFFF;
+    --light-grey: #F5F5F7;
+    --dark-grey: #1A1A1A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: none; /* Desativa o cursor padrão para usarmos o moderno */
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--primary-black);
+    color: var(--clean-white);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* --- CURSOR MODERNO PERSONALIZADO --- */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--luxury-gold);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.custom-cursor-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--clean-white);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- NAVBAR FIXA E FLUIDA --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #4b4b4be6;
+    border-bottom: 1px solid rgba(197, 155, 39, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    height: 60px; /* Ajuste conforme necessário */
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: var(--clean-white);
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--luxury-gold);
+}
+
+.social-icons a {
+    color: var(--luxury-gold);
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+/* --- BOTÃO DE AGENDAMENTO EXTERNO (FIXO E ARREDONDADO) --- */
+.btn-agendamento {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--luxury-gold), #A37F1F);
+    color: var(--primary-black);
+    padding: 15px 30px;
+    border-radius: 50px; /* Fundo arredondado solicitado */
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(197, 155, 39, 0.4);
+    z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-agendamento:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(197, 155, 39, 0.6);
+}
+
+/* --- SLIDER MODERNO (HOME) --- */
+.slider-container {
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: var(--dark-grey);
+}
+
+.slide-content h2 {
+    font-size: 3rem;
+    color: var(--luxury-gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* --- BOX BREVE DESCRIÇÃO & CARROSSEL --- */
+.brief-box {
+    padding: 60px 10%;
+    background-color: var(--dark-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.brief-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.brief-text h2 {
+    color: var(--luxury-gold);
+    margin-bottom: 20px;
+}
+
+/* Carrossel Interativo com Hover Text */
+.carousel-container {
+    flex: 1;
+    min-width: 300px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+}
+
+.carousel-item {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(197, 155, 39, 0.3);
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    color: var(--luxury-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 10px;
+    text-align: center;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-item:hover .item-overlay {
+    opacity: 1;
+}
+
+/* --- HISTÓRIA DA MARCA & PORTFÓLIO GRID --- */
+.brand-story {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.brand-story h3 {
+    color: var(--luxury-gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.portfolio-grid {
+    padding: 40px 10%;
+    background-color: var(--primary-black);
+}
+
+.portfolio-grid h3 {
+    text-align: center;
+    color: var(--luxury-gold);
+    margin-bottom: 30px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.grid-item img {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.grid-item img:hover {
+    border-color: var(--luxury-gold);
+    transform: translateY(-5px);
+}
+
+/* --- SEÇÃO QUEM SOMOS DETALHADO --- */
+.section-about {
+    padding: 100px 10%;
+    background-color: var(--light-grey);
+    color: var(--primary-black);
+}
+
+.section-about h2 {
+    color: var(--primary-black);
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.section-about .subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.pillars-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.pillar-box {
+    flex: 1;
+    min-width: 250px;
+    background: var(--clean-white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--luxury-gold);
+}
+
+.pillar-box h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* --- SEÇÃO MEDIA (FOTOS, VIDEOS, DEPOIMENTOS) --- */
+.section-media {
+    padding: 100px 10%;
+    background: var(--primary-black);
+}
+
+.section-media h2, .section-desc {
+    text-align: center;
+    color: var(--luxury-gold);
+}
+
+.section-desc { color: var(--clean-white); margin-bottom: 40px;}
+
+.media-flex {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.video-box {
+    flex: 1;
+    min-width: 300px;
+    height: 350px;
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.explain-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Depoimentos */
+.testimonials-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: var(--dark-grey);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 450px;
+    text-align: center;
+    border: 1px solid rgba(197, 155, 39, 0.2);
+}
+
+.testimonial-card img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid var(--luxury-gold);
+}
+
+/* --- SEÇÃO AMBIENTE (CLEAN & MODERNO) --- */
+.section-environment {
+    padding: 100px 10%;
+    background-color: var(--clean-white);
+    color: var(--primary-black);
+}
+
+.env-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.env-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.env-gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.env-gallery img {
+    flex: 1;
+    min-width: 280px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* --- ABA DE CONTATO E MAPA --- */
+.section-contact {
+    padding: 80px 10%;
+    background-color: var(--dark-grey);
+    border-top: 2px solid var(--luxury-gold);
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h2 {
+    color: var(--luxury-gold);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.contact-map {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--luxury-gold);
+}
+
+/* --- RESPONSIVIDADE (MOBILE-FRIENDLY) --- */
+@media (max-width: 768px) {
+    * { cursor: auto; } /* Reativa o cursor padrão em mobile */
+    .custom-cursor, .custom-cursor-dot { display: none; }
+    .navbar { padding: 15px 20px; flex-direction: column; gap: 10px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+    .nav-links li a { margin: 5px 10px; }
+    .brief-box, .media-flex, .contact-container { flex-direction: column; }
+}
