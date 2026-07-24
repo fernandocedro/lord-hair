@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord Hair - Painel Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Tela de Login Centralizada */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .login-card {
+            background: var(--primary-black, #000);
+            border: 1px solid var(--luxury-gold, #C59B27);
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(197, 155, 39, 0.2);
+        }
+
+        .login-card h2 {
+            color: var(--luxury-gold, #C59B27);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .nav-admin-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body class="admin-body">
+
+    <!-- Cursor Customizado -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="lord-hair.png" alt="Lord Hair Logo" class="logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Ver Site</a></li>
+                <li id="btn-logout-container" class="hidden">
+                    <button id="btn-logout" class="admin-btn" style="background:#d9534f; color:#fff;">Sair</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- TELA DE LOGIN (Visível por padrão até o Firebase checar a sessão) -->
+    <div id="login-section" class="login-wrapper">
+        <div class="login-card">
+            <h2>Acesso Restrito</h2>
+            <form id="form-login" class="admin-form-group">
+                <label>E-mail</label>
+                <input type="email" id="login-email" placeholder="admin@lordhair.com" required>
+                
+                <label>Senha</label>
+                <input type="password" id="login-password" placeholder="••••••••" required>
+                
+                <p id="login-error" style="color: #ff4d4d; font-size: 0.9rem; margin-top: 5px; display: none;"></p>
+                
+                <button type="submit" class="admin-btn" style="margin-top: 15px;">Entrar no Painel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAINEL DE ADMINISTRAÇÃO (Oculto até realizar login) -->
+    <div id="admin-panel" class="admin-container hidden">
+        
+        <!-- GERENCIAR SLIDER HOME -->
+        <div class="admin-card">
+            <h2>Slides da Home</h2>
+            <form id="form-slide" class="admin-form-group">
+                <label>Título do Slide</label>
+                <input type="text" id="slide-title" required>
+                <label>Subtítulo</label>
+                <input type="text" id="slide-subtitle" required>
+                <label>Imagem do Slide</label>
+                <input type="file" id="slide-img" accept="image/*" required>
+                <button type="submit" class="admin-btn">Adicionar Slide</button>
+            </form>
+            <div id="slides-list" class="admin-list"></div>
+        </div>
+
+        <!-- GERENCIAR TEXTOS PRINCIPAIS -->
+        <div class="admin-card">
+            <h2>Textos do Site</h2>
+            <form id="form-textos" class="admin-form-group">
+                <label>Quem Somos & O Que Fazemos (Home)</label>
+                <textarea id="txt-quem-somos-home" rows="3"></textarea>
+                
+                <label>Nossa História</label>
+                <textarea id="txt-historia" rows="3"></textarea>
+
+                <button type="submit" class="admin-btn">Salvar Textos</button>
+            </form>
+        </div>
+
+        <!-- GERENCIAR PORTFÓLIO -->
+        <div class="admin-card">
+            <h2>Fotos do Portfólio</h2>
+            <form id="form-portfolio" class="admin-form-group">
+                <label>Nova Imagem para o Portfólio</label>
+                <input type="file" id="portfolio-img" accept="image/*" required>
+                <button type="submit" class="admin-btn">Adicionar ao Portfólio</button>
+            </form>
+            <div id="portfolio-list" class="admin-list"></div>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
