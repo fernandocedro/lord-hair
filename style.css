@@ -11,23 +11,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    cursor: none !important; /* Força o cursor padrão a sumir em todas as seções */
 }
 
-/* Garante que o cursor customizado fique SEMPRE por cima de tudo ao rolar */
-.custom-cursor,
-.custom-cursor-dot {
-    position: fixed !important;
-    pointer-events: none !important;
-    z-index: 999999 !important;
-}
 
 
 html {
     scroll-behavior: smooth;
     background-color: var(--primary-black);
     color: var(--clean-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -98,12 +90,15 @@ body {
     color: var(--luxury-gold);
 }
 
+/* Estilo do link */
 .social-icons a {
     color: var(--luxury-gold);
     text-decoration: none;
     margin-left: 15px;
-    font-weight: bold;
+    font-size: 24px; /* Adicione tamanho se quiser aumentar os ícones */
 }
+
+
 
 /* --- BOTÃO DE AGENDAMENTO EXTERNO (FIXO E ARREDONDADO) --- */
 .btn-agendamento {
@@ -156,7 +151,7 @@ body {
 .slide-content {
     position: absolute;
     bottom: 20%;
-    left: 10%;
+    padding: 0 600px 0 10%;
     color: var(--dark-grey);
 }
 
@@ -379,8 +374,9 @@ body {
 }
 
 .testimonial-card img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin-bottom: 15px;
     border: 2px solid var(--luxury-gold);
 }
 
